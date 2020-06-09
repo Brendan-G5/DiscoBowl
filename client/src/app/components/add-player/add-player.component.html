@@ -1,1 +1,4 @@
-<p>add-player works!</p>
+<form class="form" (ngSubmit) = "onSubmit()">
+  <input type="text" name='toAdd' [(ngModel)] = 'toAdd' placeholder="Add players here..." autocomplete="off">
+  <input type='submit' value = 'Submit'>
+</form>
