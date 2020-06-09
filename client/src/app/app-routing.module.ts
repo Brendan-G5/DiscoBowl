@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { SetUpComponent } from "./views/set-up/set-up.component";
 import { GamePlayComponent } from "./views/game-play/game-play.component";
+import { PlayerSelectionComponent } from "./components/player-selection/player-selection.component"
 
 const routes: Routes = [
-  { path: "", component: SetUpComponent },
+  { path: "", component: PlayerSelectionComponent },
   { path: "play", component: GamePlayComponent },
 ];
 

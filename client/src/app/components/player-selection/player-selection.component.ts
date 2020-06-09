@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { StateService } from "../../services/service-state.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-player-selection",
@@ -6,7 +8,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./player-selection.component.css"],
 })
 export class PlayerSelectionComponent implements OnInit {
-  constructor() {}
+  constructor(private stateService: StateService, private router: Router) {}
 
   players: string[];
 
@@ -26,5 +28,10 @@ export class PlayerSelectionComponent implements OnInit {
     this.players = this.players.filter((player) => {
       return name !== player;
     });
+  }
+
+  playGame(): void {
+    this.stateService.setPlayers(this.players);
+    this.router.navigate(["play"]);
   }
 }
