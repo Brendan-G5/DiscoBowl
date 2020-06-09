@@ -9,6 +9,11 @@
     "lint": "eslint \"**/*.{js,ts}\" --quiet --fix",
     "e2e": "ng e2e"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~9.0.7",
@@ -19,6 +24,7 @@
     "@angular/platform-browser": "~9.0.7",
     "@angular/platform-browser-dynamic": "~9.0.7",
     "@angular/router": "~9.0.7",
+    "husky": "^4.2.5",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
