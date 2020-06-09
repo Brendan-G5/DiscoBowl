@@ -1,2 +1,7 @@
 <app-player-item *ngFor= "let player of players" [player] = "player" (deletePlayer) = "deletePlayer($event)"></app-player-item>
 <app-add-player (addPlayer) = "addPlayer($event)"></app-add-player>
+<nav>
+  <a routerLink='play' *ngIf="players.length > 0">
+    Play!
+  </a>
+</nav>
