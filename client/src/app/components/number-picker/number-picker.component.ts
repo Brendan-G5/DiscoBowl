@@ -34,7 +34,6 @@ export class NumberPickerComponent implements OnInit {
       this.buttons = this.numbers;
       this.ballNumber = 0;
     }
-    console.log(this.bowlService.refreshNumbers);
     if (this.bowlService.refreshNumbers) {
       this.resetNumbers();
     }

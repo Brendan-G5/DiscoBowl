@@ -1,4 +1,4 @@
-<button routerLink = "">Complete Reset</button>
+<button routerLink = "" (click) = "playAgain()">Complete Reset</button>
 <app-score-card *ngFor="let player of fullPlayers" [player] ="player"></app-score-card>
 <app-number-picker *ngIf="!finished; else elseBlock" (updateBoard)="updateBoard()"></app-number-picker>
 <ng-template #elseBlock>

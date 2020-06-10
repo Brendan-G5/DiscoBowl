@@ -59,7 +59,6 @@ export class BowlingStateService {
         this.TenBall
       ] = pins;
       if (this.TenBall === 0) {
-        console.log('ten ball # 0')
         this.TenFirstHit = pins;
         this.awardTriple(pins, ballNumber);
         this.awardDouble(pins, ballNumber);
@@ -67,7 +66,6 @@ export class BowlingStateService {
         this.calcTotalScore();
         this.TenBall++;
       } else if (this.TenBall === 1) {
-        console.log('ten ball # 1')
         this.awardDouble(pins, ballNumber);
         this.awardSpare(pins, ballNumber);
         this.calcTotalScore();
@@ -78,14 +76,12 @@ export class BowlingStateService {
           this.refreshNumbers = true;
         }
       } else if (this.TenBall === 2) {
-        console.log('ten ball # 2')
         this.calcTotalScore();
         this.TenBall = 0;
         this.nextPlayer();
         this.refreshNumbers = true;
       }
     }
-    console.log(this.BowlingState);
   }
 
   calcScores(pins: number, ballNumber: number): void {
