@@ -21,6 +21,7 @@ export class NumberPickerComponent implements OnInit {
 
   resetNumbers(): void {
     this.buttons = this.numbers;
+    this.ballNumber = 0;
   }
 
   bowl(pins: number): void {
@@ -33,9 +34,10 @@ export class NumberPickerComponent implements OnInit {
       this.buttons = this.numbers;
       this.ballNumber = 0;
     }
-    this.updateBoard.emit();
+    console.log(this.bowlService.refreshNumbers);
     if (this.bowlService.refreshNumbers) {
       this.resetNumbers();
     }
+    this.updateBoard.emit();
   }
 }

@@ -59,6 +59,7 @@ export class BowlingStateService {
         this.TenBall
       ] = pins;
       if (this.TenBall === 0) {
+        console.log('ten ball # 0')
         this.TenFirstHit = pins;
         this.awardTriple(pins, ballNumber);
         this.awardDouble(pins, ballNumber);
@@ -66,6 +67,7 @@ export class BowlingStateService {
         this.calcTotalScore();
         this.TenBall++;
       } else if (this.TenBall === 1) {
+        console.log('ten ball # 1')
         this.awardDouble(pins, ballNumber);
         this.awardSpare(pins, ballNumber);
         this.calcTotalScore();
@@ -76,6 +78,7 @@ export class BowlingStateService {
           this.refreshNumbers = true;
         }
       } else if (this.TenBall === 2) {
+        console.log('ten ball # 2')
         this.calcTotalScore();
         this.TenBall = 0;
         this.nextPlayer();
@@ -153,7 +156,7 @@ export class BowlingStateService {
     let maxScore = 0;
     let playerIndex = [];
     for (let i = 0; i < this.BowlingState.length; i++) {
-      if (this.BowlingState[i].totalMatchScore > maxScore){
+      if (this.BowlingState[i].totalMatchScore > maxScore) {
         maxScore = this.BowlingState[i].totalMatchScore;
         playerIndex = [i];
       } else if (this.BowlingState[i].totalMatchScore === maxScore) {
