@@ -41,11 +41,16 @@ export class BowlingStateService {
     this.BowlingState[this.CurrentPlayer].frameScore[this.FrameNumber][
       ballNumber
     ] = pins;
-    this.BowlingState[this.CurrentPlayer].RoundScore += pins;
+    this.calcTotalScore(pins);
     if (pins === 10 || ballNumber === 1) {
       this.nextPlayer();
     }
     console.log(this.BowlingState);
+  }
+
+  calcTotalScore(pins: number): void {
+    this.BowlingState[this.CurrentPlayer].RoundScore[this.FrameNumber] += pins;
+    this.BowlingState[this.CurrentPlayer].totalMatchScore += pins;
   }
 
   endGame(): void {

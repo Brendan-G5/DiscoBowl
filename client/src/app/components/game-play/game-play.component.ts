@@ -25,8 +25,9 @@ export class GamePlayComponent implements OnInit {
       this.fullPlayers.push({
         name: name,
         totalMatchScore: 0,
-        RoundScore: 0,
+        RoundScore: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         frameScore: [[], [], [], [], [], [], [], [], [], []],
+        gamesWon: 0,
       });
     });
     this.bowlService.setBowlers(this.fullPlayers);

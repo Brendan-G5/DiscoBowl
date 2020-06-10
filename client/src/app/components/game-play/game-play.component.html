@@ -6,7 +6,11 @@
      {{score[0]}}|{{score[1]}}
   </div>
   <br>
-  RoundScore: {{player.RoundScore}}
+  <div *ngFor="let score of player.RoundScore">
+    {{score}}
+ </div>
+ <br>
+   {{player.totalMatchScore}}
   <br>
   ------------------------------------
 </div>
