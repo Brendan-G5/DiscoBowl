@@ -1,9 +1,10 @@
 export class FullPlayer {
   name: string;
   totalMatchScore: number;
-  RoundScore: number[];
+  roundScore: number[];
   frameScore: number[][];
   gamesWon: number;
   spare: boolean;
   strike: boolean;
+  doubleStrike: boolean;
 }

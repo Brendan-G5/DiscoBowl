@@ -46,19 +46,44 @@ export class BowlingStateService {
   }
 
   calcScores(pins: number, ballNumber: number): void {
-    this.BowlingState[this.CurrentPlayer].RoundScore[this.FrameNumber] += pins;
+    this.BowlingState[this.CurrentPlayer].roundScore[this.FrameNumber] += pins;
+    if (this.BowlingState[this.CurrentPlayer].doubleStrike) {
+      this.BowlingState[this.CurrentPlayer].roundScore[
+        this.FrameNumber - 2
+      ] += pins;
+      if (ballNumber === 1) {
+        this.BowlingState[this.CurrentPlayer].doubleStrike = false;
+      }
+    }
+    if (this.BowlingState[this.CurrentPlayer].strike) {
+      this.BowlingState[this.CurrentPlayer].roundScore[
+        this.FrameNumber - 1
+      ] += pins;
+      if (ballNumber === 0 && pins === 10) {
+        this.BowlingState[this.CurrentPlayer].doubleStrike = true;
+      }
+      if (ballNumber === 1) {
+        this.BowlingState[this.CurrentPlayer].strike = false;
+      }
+    }
     if (this.BowlingState[this.CurrentPlayer].spare && ballNumber === 0) {
-      this.BowlingState[this.CurrentPlayer].RoundScore[
+      this.BowlingState[this.CurrentPlayer].roundScore[
         this.FrameNumber - 1
       ] += pins;
       this.BowlingState[this.CurrentPlayer].spare = false;
     }
     if (
-      this.BowlingState[this.CurrentPlayer].RoundScore[this.FrameNumber] ===
-        10 &&
-      this.BowlingState[this.CurrentPlayer].frameScore[this.FrameNumber][1]
+      this.BowlingState[this.CurrentPlayer].roundScore[this.FrameNumber] === 10
     ) {
-      this.BowlingState[this.CurrentPlayer].spare = true;
+      if (
+        this.BowlingState[this.CurrentPlayer].frameScore[this.FrameNumber][1]
+      ) {
+        this.BowlingState[this.CurrentPlayer].spare = true;
+        console.log("spare is true");
+      } else {
+        this.BowlingState[this.CurrentPlayer].strike = true;
+        console.log("strike is true");
+      }
     }
     this.calcTotalScore();
   }
@@ -66,7 +91,7 @@ export class BowlingStateService {
   calcTotalScore(): void {
     this.BowlingState[this.CurrentPlayer].totalMatchScore = this.BowlingState[
       this.CurrentPlayer
-    ].RoundScore.reduce((a, b) => {
+    ].roundScore.reduce((a, b) => {
       return a + b;
     });
   }
