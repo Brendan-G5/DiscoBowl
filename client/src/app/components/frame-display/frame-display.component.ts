@@ -13,6 +13,5 @@ export class FrameDisplayComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  ngOnChange(): void {
-  }
+  ngOnChange(): void {}
 }

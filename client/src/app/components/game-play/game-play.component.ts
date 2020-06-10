@@ -16,10 +16,11 @@ export class GamePlayComponent implements OnInit {
 
   players: string[];
   fullPlayers: FullPlayer[];
+  finished = false;
 
   ngOnInit(): void {
-    // this.players = this.stateService.players;
-    this.players = ["Brendan"];
+    this.players = this.stateService.players;
+    // this.players = ["Brendan"];
     this.fullPlayers = [];
     this.players.forEach((name) => {
       this.fullPlayers.push({
@@ -36,7 +37,15 @@ export class GamePlayComponent implements OnInit {
     this.bowlService.setBowlers(this.fullPlayers);
   }
 
+  playAgain(): void {
+    this.bowlService.rematch();
+    this.finished = false;
+  }
+
   updateBoard(): void {
     this.fullPlayers = this.bowlService.getBowlers();
+    if (this.bowlService.gameover) {
+      this.finished = true;
+    }
   }
 }

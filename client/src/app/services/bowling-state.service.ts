@@ -14,6 +14,7 @@ export class BowlingStateService {
   TenBall = 0;
   TenFirstHit: number;
   refreshNumbers = false;
+  gameover = false;
 
   setBowlers(players: FullPlayer[]): void {
     this.BowlingState = players;
@@ -78,6 +79,7 @@ export class BowlingStateService {
         this.calcTotalScore();
         this.TenBall = 0;
         this.nextPlayer();
+        this.refreshNumbers = true;
       }
     }
     console.log(this.BowlingState);
@@ -131,10 +133,8 @@ export class BowlingStateService {
       this.BowlingState[this.CurrentPlayer].roundScore[this.FrameNumber] === 10
     ) {
       if (ballNumber === 0) {
-        console.log("strike is true");
         this.BowlingState[this.CurrentPlayer].strike = true;
       } else {
-        console.log("spare is true");
         this.BowlingState[this.CurrentPlayer].spare = true;
       }
     }
@@ -149,6 +149,36 @@ export class BowlingStateService {
   }
 
   endGame(): void {
-    console.log("game over");
+    this.gameover = true;
+    let maxScore = 0;
+    let playerIndex = [];
+    for (let i = 0; i < this.BowlingState.length; i++) {
+      if (this.BowlingState[i].totalMatchScore > maxScore){
+        maxScore = this.BowlingState[i].totalMatchScore;
+        playerIndex = [i];
+      } else if (this.BowlingState[i].totalMatchScore === maxScore) {
+        playerIndex.push(i);
+      }
+    }
+    playerIndex.forEach((index) => {
+      this.BowlingState[index].gamesWon++;
+    });
+  }
+
+  rematch(): void {
+    this.FrameNumber = 0;
+    this.PlayerNumber = 0;
+    this.CurrentPlayer = 0;
+    this.TenBall = 0;
+    this.refreshNumbers = false;
+    this.gameover = false;
+    this.BowlingState.forEach((player) => {
+      (player.totalMatchScore = 0),
+        (player.roundScore = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]),
+        (player.frameScore = [[], [], [], [], [], [], [], [], [], []]),
+        (player.spare = false),
+        (player.strike = false),
+        (player.doubleStrike = false);
+    });
   }
 }
