@@ -11,7 +11,8 @@ export class BowlingStateService {
   PlayerNumber = 0;
   NumberOfPlayers: number;
   CurrentPlayer = 0;
-  lastRound = false;
+  TenBall = 0;
+  TenFirstHit: number;
 
   setBowlers(players: FullPlayer[]): void {
     this.BowlingState = players;
@@ -35,18 +36,60 @@ export class BowlingStateService {
   }
 
   throw(pins: number, ballNumber: number): void {
-    this.BowlingState[this.CurrentPlayer].frameScore[this.FrameNumber][
-      ballNumber
-    ] = pins;
-    this.calcScores(pins, ballNumber);
-    if (pins === 10 || ballNumber === 1) {
-      this.nextPlayer();
+    let spot = ballNumber;
+    if (pins === 10) {
+      spot = 1;
+    }
+    if (this.FrameNumber !== 9) {
+      this.BowlingState[this.CurrentPlayer].frameScore[this.FrameNumber][
+        spot
+      ] = pins;
+      this.calcScores(pins, ballNumber);
+      if (pins === 10 || ballNumber === 1) {
+        this.nextPlayer();
+      }
+    } else {
+      this.BowlingState[this.CurrentPlayer].roundScore[
+        this.FrameNumber
+      ] += pins;
+      this.BowlingState[this.CurrentPlayer].frameScore[this.FrameNumber][
+        this.TenBall
+      ] = pins;
+      if (this.TenBall === 0) {
+        this.TenFirstHit = pins;
+        this.awardTriple(pins, ballNumber);
+        this.awardDouble(pins, ballNumber);
+        this.awardSpare(pins, ballNumber);
+        this.calcTotalScore();
+        this.TenBall++;
+      } else if (this.TenBall === 1) {
+        this.awardDouble(pins, ballNumber);
+        this.awardSpare(pins, ballNumber);
+        this.calcTotalScore();
+        this.TenBall++;
+        if (this.TenFirstHit + pins < 10) {
+          this.TenBall = 0;
+          this.nextPlayer();
+        }
+      } else if (this.TenBall === 2) {
+        this.calcTotalScore();
+        this.TenBall = 0;
+        this.nextPlayer();
+      }
     }
     console.log(this.BowlingState);
   }
 
   calcScores(pins: number, ballNumber: number): void {
     this.BowlingState[this.CurrentPlayer].roundScore[this.FrameNumber] += pins;
+    this.awardTriple(pins, ballNumber);
+    this.awardDouble(pins, ballNumber);
+    this.awardSpare(pins, ballNumber);
+    this.checkForSpecial();
+    this.calcTotalScore();
+  }
+
+  awardTriple(pins: number, ballNumber: number): void {
     if (this.BowlingState[this.CurrentPlayer].doubleStrike) {
       this.BowlingState[this.CurrentPlayer].roundScore[
         this.FrameNumber - 2
@@ -55,6 +98,9 @@ export class BowlingStateService {
         this.BowlingState[this.CurrentPlayer].doubleStrike = false;
       }
     }
+  }
+
+  awardDouble(pins: number, ballNumber: number): void {
     if (this.BowlingState[this.CurrentPlayer].strike) {
       this.BowlingState[this.CurrentPlayer].roundScore[
         this.FrameNumber - 1
@@ -66,26 +112,30 @@ export class BowlingStateService {
         this.BowlingState[this.CurrentPlayer].strike = false;
       }
     }
+  }
+
+  awardSpare(pins: number, ballNumber: number): void {
     if (this.BowlingState[this.CurrentPlayer].spare && ballNumber === 0) {
       this.BowlingState[this.CurrentPlayer].roundScore[
         this.FrameNumber - 1
       ] += pins;
       this.BowlingState[this.CurrentPlayer].spare = false;
     }
+  }
+
+  checkForSpecial(): void {
     if (
       this.BowlingState[this.CurrentPlayer].roundScore[this.FrameNumber] === 10
     ) {
       if (
+        this.BowlingState[this.CurrentPlayer].frameScore[this.FrameNumber][0] &&
         this.BowlingState[this.CurrentPlayer].frameScore[this.FrameNumber][1]
       ) {
         this.BowlingState[this.CurrentPlayer].spare = true;
-        console.log("spare is true");
       } else {
         this.BowlingState[this.CurrentPlayer].strike = true;
-        console.log("strike is true");
       }
     }
-    this.calcTotalScore();
   }
 
   calcTotalScore(): void {
