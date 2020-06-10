@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { NumberPickerComponent } from './number-picker.component';
+import { NumberPickerComponent } from "./number-picker.component";
 
-describe('NumberPickerComponent', () => {
+describe("NumberPickerComponent", () => {
   let component: NumberPickerComponent;
   let fixture: ComponentFixture<NumberPickerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NumberPickerComponent ]
-    })
-    .compileComponents();
+      declarations: [NumberPickerComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('NumberPickerComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

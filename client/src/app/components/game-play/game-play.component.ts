@@ -26,9 +26,13 @@ export class GamePlayComponent implements OnInit {
         name: name,
         totalMatchScore: 0,
         RoundScore: 0,
-        frameScore: [],
+        frameScore: [[], [], [], [], [], [], [], [], [], []],
       });
     });
     this.bowlService.setBowlers(this.fullPlayers);
+  }
+
+  updateBoard(): void {
+    this.fullPlayers = this.bowlService.getBowlers();
   }
 }

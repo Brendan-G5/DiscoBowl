@@ -1,12 +1,13 @@
 <div *ngFor="let player of fullPlayers">
   Name: {{player.name}}
   <br>
-  FrameScore: {{player.frameScore}}
+  FrameScore:
+  <div *ngFor="let score of player.frameScore">
+     {{score[0]}}|{{score[1]}}
+  </div>
   <br>
   RoundScore: {{player.RoundScore}}
   <br>
   ------------------------------------
-
-
-  <app-number-picker></app-number-picker>
 </div>
+<app-number-picker (updateBoard)="updateBoard()"></app-number-picker>

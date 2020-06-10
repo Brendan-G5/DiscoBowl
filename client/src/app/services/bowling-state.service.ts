@@ -7,12 +7,48 @@ import { FullPlayer } from "../models/Player";
 export class BowlingStateService {
   constructor() {}
   BowlingState: FullPlayer[];
-  FrameNumber: number;
-  BallNumber: number;
-  PlayerNumber: number;
+  FrameNumber = 0;
+  PlayerNumber = 0;
+  NumberOfPlayers: number;
+  CurrentPlayer = 0;
+  lastRound = false;
 
   setBowlers(players: FullPlayer[]): void {
     this.BowlingState = players;
+    this.NumberOfPlayers = players.length;
+  }
+
+  getBowlers(): FullPlayer[] {
+    return this.BowlingState;
+  }
+
+  nextPlayer(): void {
+    if (this.CurrentPlayer + 1 >= this.NumberOfPlayers) {
+      this.CurrentPlayer = 0;
+      this.FrameNumber++;
+      if (this.FrameNumber >= 10) {
+        this.endGame();
+      }
+    } else {
+      this.CurrentPlayer = this.CurrentPlayer + 1;
+    }
+  }
+
+  throw(pins: number, ballNumber: number): void {
+    if (pins === 10) {
+      ballNumber = 1;
+    }
+    this.BowlingState[this.CurrentPlayer].frameScore[this.FrameNumber][
+      ballNumber
+    ] = pins;
+    this.BowlingState[this.CurrentPlayer].RoundScore += pins;
+    if (pins === 10 || ballNumber === 1) {
+      this.nextPlayer();
+    }
     console.log(this.BowlingState);
+  }
+
+  endGame(): void {
+    console.log("game over");
   }
 }
