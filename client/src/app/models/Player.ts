@@ -4,4 +4,6 @@ export class FullPlayer {
   RoundScore: number[];
   frameScore: number[][];
   gamesWon: number;
+  spare: boolean;
+  strike: boolean;
 }

@@ -35,22 +35,40 @@ export class BowlingStateService {
   }
 
   throw(pins: number, ballNumber: number): void {
-    if (pins === 10) {
-      ballNumber = 1;
-    }
     this.BowlingState[this.CurrentPlayer].frameScore[this.FrameNumber][
       ballNumber
     ] = pins;
-    this.calcTotalScore(pins);
+    this.calcScores(pins, ballNumber);
     if (pins === 10 || ballNumber === 1) {
       this.nextPlayer();
     }
     console.log(this.BowlingState);
   }
 
-  calcTotalScore(pins: number): void {
+  calcScores(pins: number, ballNumber: number): void {
     this.BowlingState[this.CurrentPlayer].RoundScore[this.FrameNumber] += pins;
-    this.BowlingState[this.CurrentPlayer].totalMatchScore += pins;
+    if (this.BowlingState[this.CurrentPlayer].spare && ballNumber === 0) {
+      this.BowlingState[this.CurrentPlayer].RoundScore[
+        this.FrameNumber - 1
+      ] += pins;
+      this.BowlingState[this.CurrentPlayer].spare = false;
+    }
+    if (
+      this.BowlingState[this.CurrentPlayer].RoundScore[this.FrameNumber] ===
+        10 &&
+      this.BowlingState[this.CurrentPlayer].frameScore[this.FrameNumber][1]
+    ) {
+      this.BowlingState[this.CurrentPlayer].spare = true;
+    }
+    this.calcTotalScore();
+  }
+
+  calcTotalScore(): void {
+    this.BowlingState[this.CurrentPlayer].totalMatchScore = this.BowlingState[
+      this.CurrentPlayer
+    ].RoundScore.reduce((a, b) => {
+      return a + b;
+    });
   }
 
   endGame(): void {

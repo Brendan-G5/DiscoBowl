@@ -19,7 +19,7 @@ export class GamePlayComponent implements OnInit {
 
   ngOnInit(): void {
     // this.players = this.stateService.players;
-    this.players = ["Brendan", "Maya"];
+    this.players = ["Brendan"];
     this.fullPlayers = [];
     this.players.forEach((name) => {
       this.fullPlayers.push({
@@ -28,6 +28,8 @@ export class GamePlayComponent implements OnInit {
         RoundScore: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         frameScore: [[], [], [], [], [], [], [], [], [], []],
         gamesWon: 0,
+        spare: false,
+        strike: false,
       });
     });
     this.bowlService.setBowlers(this.fullPlayers);
