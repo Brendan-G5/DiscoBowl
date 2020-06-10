@@ -13,6 +13,7 @@ export class BowlingStateService {
   CurrentPlayer = 0;
   TenBall = 0;
   TenFirstHit: number;
+  refreshNumbers = false;
 
   setBowlers(players: FullPlayer[]): void {
     this.BowlingState = players;
@@ -36,6 +37,7 @@ export class BowlingStateService {
   }
 
   throw(pins: number, ballNumber: number): void {
+    this.refreshNumbers = false;
     let spot = ballNumber;
     if (pins === 10) {
       spot = 1;
@@ -70,6 +72,7 @@ export class BowlingStateService {
         if (this.TenFirstHit + pins < 10) {
           this.TenBall = 0;
           this.nextPlayer();
+          this.refreshNumbers = true;
         }
       } else if (this.TenBall === 2) {
         this.calcTotalScore();

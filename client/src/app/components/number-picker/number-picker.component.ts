@@ -16,6 +16,7 @@ export class NumberPickerComponent implements OnInit {
 
   ngOnInit(): void {
     this.resetNumbers();
+    this.ballNumber = 0;
   }
 
   resetNumbers(): void {
@@ -33,5 +34,8 @@ export class NumberPickerComponent implements OnInit {
       this.ballNumber = 0;
     }
     this.updateBoard.emit();
+    if (this.bowlService.refreshNumbers) {
+      this.resetNumbers();
+    }
   }
 }
