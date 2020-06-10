@@ -88,7 +88,7 @@ export class BowlingStateService {
     this.awardTriple(pins, ballNumber);
     this.awardDouble(pins, ballNumber);
     this.awardSpare(pins, ballNumber);
-    this.checkForSpecial();
+    this.checkForSpecial(ballNumber);
     this.calcTotalScore();
   }
 
@@ -126,17 +126,16 @@ export class BowlingStateService {
     }
   }
 
-  checkForSpecial(): void {
+  checkForSpecial(ballNumber: number): void {
     if (
       this.BowlingState[this.CurrentPlayer].roundScore[this.FrameNumber] === 10
     ) {
-      if (
-        this.BowlingState[this.CurrentPlayer].frameScore[this.FrameNumber][0] &&
-        this.BowlingState[this.CurrentPlayer].frameScore[this.FrameNumber][1]
-      ) {
-        this.BowlingState[this.CurrentPlayer].spare = true;
-      } else {
+      if (ballNumber === 0) {
+        console.log("strike is true");
         this.BowlingState[this.CurrentPlayer].strike = true;
+      } else {
+        console.log("spare is true");
+        this.BowlingState[this.CurrentPlayer].spare = true;
       }
     }
   }

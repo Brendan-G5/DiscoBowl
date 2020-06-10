@@ -1,9 +1,8 @@
 .one-frame {
   display: flex;
   flex-direction: column;
-  min-width: 40px;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
   height: 100%;
 }
 

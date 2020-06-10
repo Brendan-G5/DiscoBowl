@@ -12,9 +12,9 @@ import { AddPlayerComponent } from "./components/add-player/add-player.component
 import { PlayerSelectionComponent } from "./components/player-selection/player-selection.component";
 import { PlayerItemComponent } from "./components/player-item/player-item.component";
 import { NumberPickerComponent } from "./components/number-picker/number-picker.component";
-import { ScoreCardComponent } from './views/score-card/score-card.component';
-import { FrameDisplayComponent } from './components/frame-display/frame-display.component';
-import { FinalFrameDisplayComponent } from './components/final-frame-display/final-frame-display.component';
+import { ScoreCardComponent } from "./views/score-card/score-card.component";
+import { FrameDisplayComponent } from "./components/frame-display/frame-display.component";
+import { FinalFrameDisplayComponent } from "./components/final-frame-display/final-frame-display.component";
 
 @NgModule({
   declarations: [

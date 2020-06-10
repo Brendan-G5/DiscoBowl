@@ -11,6 +11,5 @@ export class ScoreCardComponent implements OnInit {
 
   @Input() player: FullPlayer;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }

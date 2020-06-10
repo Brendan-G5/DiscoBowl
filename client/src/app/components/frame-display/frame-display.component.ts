@@ -12,4 +12,7 @@ export class FrameDisplayComponent implements OnInit {
   @Input() roundScore: number[];
 
   ngOnInit(): void {}
+
+  ngOnChange(): void {
+  }
 }

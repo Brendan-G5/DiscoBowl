@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { FinalFrameDisplayComponent } from './final-frame-display.component';
+import { FinalFrameDisplayComponent } from "./final-frame-display.component";
 
-describe('FinalFrameDisplayComponent', () => {
+describe("FinalFrameDisplayComponent", () => {
   let component: FinalFrameDisplayComponent;
   let fixture: ComponentFixture<FinalFrameDisplayComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FinalFrameDisplayComponent ]
-    })
-    .compileComponents();
+      declarations: [FinalFrameDisplayComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('FinalFrameDisplayComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

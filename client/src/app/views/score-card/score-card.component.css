@@ -3,14 +3,24 @@
   align-self: center;
   display: flex;
   justify-content: space-evenly;
-  border: 2px solid black;
-  height: 101px;
+  border: 3px solid black;
   margin: 60px;
+  max-width: 2000px;
+  height: 101px;
 }
 
 .frames {
   display: flex;
+  flex:10;
+  justify-content: center;
+}
+
+.one-frame {
   flex:1;
+}
+
+.final-frame {
+  flex: 1.5;
 }
 
 .player-info {

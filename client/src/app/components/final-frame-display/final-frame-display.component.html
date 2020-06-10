@@ -1,16 +1,40 @@
-<div class = 'one-frame'>
-  <div class = 'frame-top'>
-    <div class = 'top-left'>
-      <p>{{frameScore[0]}}</p>
+<div class='one-frame'>
+  <div class='frame-top'>
+    <div class='top-left'>
+      <p *ngIf="frameScore[0] !== 10; else elseBlock">{{frameScore[0]}}</p>
+      <ng-template #elseBlock>
+        <p>X</p>
+      </ng-template>
     </div>
-    <div class = 'top-center'>
-      <p>{{frameScore[1]}}</p>
+    <div class='top-center'>
+      <ng-container *ngIf="frameScore[1] === 10;else secondpt2">
+        <p>X</p>
+      </ng-container>
+      <ng-template #secondpt2>
+        <ng-container *ngIf="frameScore[0]+frameScore[1] === 10;else thirdpt2">
+          <p>/</p>
+        </ng-container>
+      </ng-template>
+      <ng-template #thirdpt2>
+        <p>{{frameScore[1]}}</p>
+      </ng-template>
     </div>
-    <div class = 'top-right'>
-      <p>{{frameScore[2]}}</p>
+    <div class='top-right'>
+      <ng-container *ngIf="frameScore[2] === 10;else second">
+        <p>X</p>
+      </ng-container>
+      <ng-template #second>
+        <ng-container *ngIf="frameScore[2] && frameScore[1]+frameScore[2] === 10;else third">
+          <p>/</p>
+        </ng-container>
+      </ng-template>
+      <ng-template #third>
+        <p>{{frameScore[2]}}</p>
+      </ng-template>
     </div>
   </div>
-  <div class = 'frame-bottom'>
+  <div class='frame-bottom'>
     <p>{{roundScore}}</p>
   </div>
 </div>
+
