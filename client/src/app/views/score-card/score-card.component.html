@@ -1,0 +1,21 @@
+<div class = 'score-card'>
+  <div class = 'player-info'>
+    {{player.name}}
+    {{player.gamesWon}}
+  </div>
+  <div class = 'frames'>
+    <app-frame-display [roundScore] = "player.roundScore[0]" [frameScore] = "player.frameScore[0]"></app-frame-display>
+    <app-frame-display [roundScore] = "player.roundScore[1]" [frameScore] = "player.frameScore[1]"></app-frame-display>
+    <app-frame-display [roundScore] = "player.roundScore[2]" [frameScore] = "player.frameScore[2]"></app-frame-display>
+    <app-frame-display [roundScore] = "player.roundScore[3]" [frameScore] = "player.frameScore[3]"></app-frame-display>
+    <app-frame-display [roundScore] = "player.roundScore[4]" [frameScore] = "player.frameScore[4]"></app-frame-display>
+    <app-frame-display [roundScore] = "player.roundScore[5]" [frameScore] = "player.frameScore[5]"></app-frame-display>
+    <app-frame-display [roundScore] = "player.roundScore[6]" [frameScore] = "player.frameScore[6]"></app-frame-display>
+    <app-frame-display [roundScore] = "player.roundScore[7]" [frameScore] = "player.frameScore[7]"></app-frame-display>
+    <app-frame-display [roundScore] = "player.roundScore[8]" [frameScore] = "player.frameScore[8]"></app-frame-display>
+    <app-final-frame-display [roundScore] = "player.roundScore[9]" [frameScore] = "player.frameScore[9]"></app-final-frame-display>
+  </div>
+  <div class = 'total-score'>
+    {{player.totalMatchScore}}
+  </div>
+</div>

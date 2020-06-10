@@ -1,0 +1,23 @@
+.score-card {
+  margin: auto;
+  align-self: center;
+  display: flex;
+  justify-content: space-evenly;
+  border: 2px solid black;
+  height: 101px;
+  margin: 60px;
+}
+
+.frames {
+  display: flex;
+  flex:1;
+}
+
+.player-info {
+  flex: 1
+}
+
+.total-score {
+  flex:1
+}
+

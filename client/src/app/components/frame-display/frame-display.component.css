@@ -1,0 +1,27 @@
+.one-frame {
+  display: flex;
+  flex-direction: column;
+  min-width: 40px;
+  border-left: 1px solid black;
+  height: 100%;
+}
+
+.frame-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex: 1
+}
+
+.top-right {
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  flex: 1
+}
+.top-left {
+  flex: 1
+}
+
+.frame-bottom {
+  flex: 1
+}
