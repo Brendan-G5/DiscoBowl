@@ -1,4 +1,6 @@
-export class Player {
+export class FullPlayer {
   name: string;
-  score: number;
+  totalMatchScore: number;
+  RoundScore: number;
+  frameScore: number[][];
 }
