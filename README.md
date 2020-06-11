@@ -10,7 +10,7 @@ The scorecard that i've made here is slightly different than your regular scorec
 
 ## How to use it?
 
-1. Add players to the bowler section by name, play with 1 to infinty* players. Then press play.
+1. Add players to the bowler section by name, play with as many players as you like. Then press play.
 
 PHOTO
 
