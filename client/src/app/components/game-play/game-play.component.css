@@ -1,4 +1,4 @@
-.game-play{
+.game-play {
   flex-grow: 1;
 }
 .scorecard-list {
@@ -27,10 +27,16 @@
   align-content: center;
 }
 
-.play-again{
+.play-again {
   text-align: center;
   font-size: 2rem;
   border: black 1px solid;
-  border-radius: 10px;
   width: 50vw;
+}
+
+.reset-button {
+  text-align: center;
+  font-size: 1rem;
+  border: black 1px solid;
+  width: 25vw;
 }

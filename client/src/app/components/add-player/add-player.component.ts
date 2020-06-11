@@ -1,4 +1,10 @@
-import { Component, OnInit, Output, EventEmitter, assertPlatform } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  assertPlatform,
+} from "@angular/core";
 
 @Component({
   selector: "app-add-player",

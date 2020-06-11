@@ -45,18 +45,12 @@ export class GamePlayComponent implements OnInit {
   }
 
   updateBoard(): void {
-    console.log(this.livePlayer);
-    this.livePlayer = this.fullPlayers[this.bowlService.CurrentPlayer];
-    console.log(this.livePlayer);
     this.fullPlayers = this.bowlService.getBowlers();
+    this.livePlayer = this.fullPlayers[this.bowlService.CurrentPlayer];
     if (this.bowlService.gameover) {
       this.finished = true;
     }
-    if (this.finished) {
-      console.log("show me the Winner");
-    } else {
-      this.scroll();
-    }
+    this.scroll();
   }
 
   scroll(): void {
