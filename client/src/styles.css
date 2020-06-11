@@ -1,10 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-  --primary: #0FC0FC;
-  --secondary: #7B1DAF;
-  --tertiary: #FF2FB9;
-  --accent: #D4FF47;
-  --dark: #1B3649;
+  --primary: #3D5BA3;
+  --secondary: #3D7259;
+  --tertiary: #DC696B;
+  --accent: #E7D99A;
+  --dark: #231F20;
 }
 
 html{

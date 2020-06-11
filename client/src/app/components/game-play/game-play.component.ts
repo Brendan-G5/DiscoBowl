@@ -18,6 +18,22 @@ export class GamePlayComponent implements OnInit {
   fullPlayers: FullPlayer[];
   finished = false;
   livePlayer: FullPlayer;
+  listOfColors = [
+    "#0FC0FC",
+    "#7B1DAF",
+    "#FF2FB9",
+    "#D4FF47",
+    "#B51D05",
+    "#ED7627",
+    "#FFDC40",
+    "#73BD37",
+    "#1D808B",
+    "#FC3756",
+    "#81217C",
+    "#24AD2D",
+    "#E3092F",
+    "#D13189",
+  ];
 
   //Initiates the game screen by getting names from the name service
   //Then creating a Player object based off the model for each player
@@ -54,21 +70,34 @@ export class GamePlayComponent implements OnInit {
   //so that it can be displayed on the scorecards
   updateBoard(): void {
     this.fullPlayers = this.bowlService.getBowlers();
+    if (this.livePlayer !== this.fullPlayers[this.bowlService.CurrentPlayer]) {
+      this.changeColourBack();
+    }
     this.livePlayer = this.fullPlayers[this.bowlService.CurrentPlayer];
     if (this.bowlService.gameover) {
       this.finished = true;
     }
-    this.scroll();
+    this.scrollAndChangeColour();
+  }
+
+  changeColourBack(): void {
+    const el: HTMLElement = document.getElementsByClassName(
+      "live"
+    )[0] as HTMLElement;
+    el.style.backgroundColor = "#000000";
   }
 
   //Used to scroll to the current player in the scorecard list
-  scroll(): void {
+  scrollAndChangeColour(): void {
     setTimeout(() => {
       const el: HTMLElement = document.getElementsByClassName(
         "live"
       )[0] as HTMLElement;
-      console.log(el);
+      const randomColour = this.listOfColors[
+        Math.floor(Math.random() * this.listOfColors.length)
+      ];
       el.scrollIntoView({ behavior: "smooth" });
+      el.style.backgroundColor = randomColour;
     }, 0);
   }
 }

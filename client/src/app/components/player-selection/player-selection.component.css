@@ -21,7 +21,6 @@
   border: 1px solid black ;
   border-radius: 10px;
   height: 4rem;
-  background-color: var(--tertiary);
   font-size: 3rem;
 }
 
@@ -33,9 +32,9 @@
 .player-item {
   display: flex;
   flex-direction: column;
-  background-color: var(--secondary);
-  border: 1px solid var(--accent);
+  background-color: var(--primary);
   margin: 5px;
+  box-shadow: 6px 4px 9px -1px rgba(0,0,0,0.75);
 }
 
 .bowlers-title {
@@ -50,8 +49,9 @@
   overflow: scroll;
   border: black 1px solid;
   margin-bottom: 20px;
-  background-color: var(--accent);
+  background-color: var(--tertiary);
   border-radius: 10px;
+  box-shadow: 6px 6px 5px -1px rgba(0,0,0,0.75);
 }
 
 .how-to {

@@ -12,6 +12,12 @@
 .submit-input{
   width: 90%;
   background-color: var(--secondary);
-  color:white
+  color:white;
+  cursor: pointer;
+  height: 40px;
+}
+
+.submit-input:focus{
+  outline: none;
 }
 

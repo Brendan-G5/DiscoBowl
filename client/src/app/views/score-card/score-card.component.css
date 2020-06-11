@@ -10,7 +10,8 @@
   margin-bottom: 30px;
   height: 101px;
   background-color: white;
-  color:black
+  color:black;
+  box-shadow: 6px 6px 5px -1px rgba(0,0,0,0.75);
 }
 
 .frames {

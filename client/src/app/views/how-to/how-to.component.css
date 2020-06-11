@@ -5,8 +5,9 @@
   border-radius: 20px;
   padding: 50px;
   max-width: 800px;
-  max-height: 400px;
+  max-height: 300px;
   overflow: scroll;
+  box-shadow: 6px 6px 5px -1px rgba(0,0,0,0.75);
 }
 
 .text {
