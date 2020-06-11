@@ -162,6 +162,7 @@ export class BowlingStateService {
     playerIndex.forEach((index) => {
       this.BowlingState[index].gamesWon++;
     });
+    this.CurrentPlayer = Infinity;
   }
 
   rematch(): void {
