@@ -11,3 +11,7 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
+.live {
+  background-color: gray;
+}

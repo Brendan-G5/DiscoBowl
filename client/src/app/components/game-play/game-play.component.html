@@ -1,6 +1,6 @@
 <button routerLink = "" (click) = "playAgain()">Complete Reset</button>
 <div class = 'scorecard-list'>
-  <app-score-card *ngFor="let player of fullPlayers" [player] ="player"></app-score-card>
+  <app-score-card [ngClass]="{'live': player === livePlayer}" *ngFor="let player of fullPlayers" [player] ="player"></app-score-card>
 </div>
 <app-number-picker *ngIf="!finished; else elseBlock" (updateBoard)="updateBoard()"></app-number-picker>
 <ng-template #elseBlock>

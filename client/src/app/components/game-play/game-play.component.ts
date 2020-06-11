@@ -17,6 +17,7 @@ export class GamePlayComponent implements OnInit {
   players: string[];
   fullPlayers: FullPlayer[];
   finished = false;
+  livePlayer: FullPlayer;
 
   ngOnInit(): void {
     // this.players = this.stateService.players;
@@ -35,6 +36,7 @@ export class GamePlayComponent implements OnInit {
       });
     });
     this.bowlService.setBowlers(this.fullPlayers);
+    this.livePlayer = this.bowlService.getBowlers()[0];
   }
 
   playAgain(): void {
@@ -44,6 +46,7 @@ export class GamePlayComponent implements OnInit {
 
   updateBoard(): void {
     this.fullPlayers = this.bowlService.getBowlers();
+    this.livePlayer = this.fullPlayers[this.bowlService.CurrentPlayer];
     if (this.bowlService.gameover) {
       this.finished = true;
     }
