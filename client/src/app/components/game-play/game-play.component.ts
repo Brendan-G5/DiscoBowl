@@ -20,8 +20,8 @@ export class GamePlayComponent implements OnInit {
   livePlayer: FullPlayer;
 
   ngOnInit(): void {
-    // this.players = this.stateService.players;
-    this.players = ["Shaggy", "Velma", "Fred", "Scooby", "Daphnie", "Scrappy"];
+    this.players = this.stateService.players;
+    // this.players = ["Shaggy"];
     this.fullPlayers = [];
     this.players.forEach((name) => {
       this.fullPlayers.push({
@@ -53,7 +53,7 @@ export class GamePlayComponent implements OnInit {
       this.finished = true;
     }
     if (this.finished) {
-      console.log('show me the Winner');
+      console.log("show me the Winner");
     } else {
       this.scroll();
     }

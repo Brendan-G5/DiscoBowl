@@ -1,0 +1,9 @@
+.how-to {
+  margin-left: 100px;
+  margin-right: 100px;
+  background-color: var(--primary);
+  border-radius: 20px;
+  padding: 50px;
+  max-width: 800px;
+  max-height: 400px;
+}

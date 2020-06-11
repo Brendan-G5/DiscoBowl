@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, assertPlatform } from "@angular/core";
 
 @Component({
   selector: "app-add-player",
@@ -15,9 +15,11 @@ export class AddPlayerComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(): void {
-    if (this.toAdd) {
+    if (this.toAdd && this.toAdd.length < 10) {
       this.addPlayer.emit(this.toAdd);
       this.toAdd = "";
+    } else if (this.toAdd.length >= 10) {
+      alert("Name must be under 10 characters");
     }
   }
 }

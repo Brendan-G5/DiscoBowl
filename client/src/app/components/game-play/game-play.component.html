@@ -1,8 +1,12 @@
-<button routerLink = "" (click) = "playAgain()">Complete Reset</button>
-<div class = 'scorecard-list'>
-  <app-score-card [ngClass]="{'live': player === livePlayer}" *ngFor="let player of fullPlayers" [player] ="player"></app-score-card>
+<div class = "game-play">
+  <button routerLink = "" (click) = "playAgain()">Complete Reset</button>
+  <div class = 'scorecard-list'>
+    <app-score-card [ngClass]="{'live': player === livePlayer}" *ngFor="let player of fullPlayers" [player] ="player"></app-score-card>
+  </div>
+  <app-number-picker *ngIf="!finished; else elseBlock" (updateBoard)="updateBoard()"></app-number-picker>
+  <ng-template  #elseBlock>
+    <div class = 'play-again-cont'>
+      <div class = 'play-again'  (click) = "playAgain()">Play Again?</div>
+    </div>
+  </ng-template>
 </div>
-<app-number-picker *ngIf="!finished; else elseBlock" (updateBoard)="updateBoard()"></app-number-picker>
-<ng-template #elseBlock>
-  <button (click) = "playAgain()">Play Again?</button>
-</ng-template>

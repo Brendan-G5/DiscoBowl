@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --primary: #0FC0FC;
+  --secondary: #7B1DAF;
+  --tertiary: #FF2FB9;
+  --accent: #D4FF47;
+  --dark: #1B3649;
+}
+
+html{
+  background: var(--dark);
+  color: white
+}
+

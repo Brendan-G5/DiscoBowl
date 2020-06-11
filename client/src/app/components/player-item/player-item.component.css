@@ -1,0 +1,17 @@
+.player-item {
+  flex-direction: row;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.del {
+  height: 2rem;
+  padding-right: 10px;
+}
+
+.player-name {
+  align-self: center;
+  padding-left: 10px;
+}
+

@@ -1,7 +1,23 @@
-<app-how-to></app-how-to>
-<app-player-item *ngFor="let player of players" [player]="player" (deletePlayer)="deletePlayer($event)">
-</app-player-item>
-<app-add-player (addPlayer)="addPlayer($event)"></app-add-player>
-<button *ngIf="players.length > 0" (click)="playGame()">
-  Play!
-</button>
+<div class="full-screen">
+  <div class='selection-screen'>
+    <div class='how-to'>
+      <app-how-to class='how-to-text'></app-how-to>
+    </div>
+    <div class='player-side'>
+      <div class='bowlers-title'>
+        Bowlers
+      </div>
+      <div class="player-item-cont">
+        <app-player-item class="player-item" *ngFor="let player of players" [player]="player"
+          (deletePlayer)="deletePlayer($event)">
+        </app-player-item>
+      </div>
+      <app-add-player (addPlayer)="addPlayer($event)"></app-add-player>
+    </div>
+  </div>
+  <div class='lets-play'>
+    <div class='play-button glow-on-hover' *ngIf="players.length > 0" (click)="playGame()">
+      Play!
+    </div>
+  </div>
+</div>
