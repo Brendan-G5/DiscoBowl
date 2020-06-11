@@ -11,7 +11,7 @@
         <p>X</p>
       </ng-container>
       <ng-template #secondpt2>
-        <ng-container *ngIf="frameScore[0]+frameScore[1] === 10;else thirdpt2">
+        <ng-container *ngIf="frameScore[0]+frameScore[1] === 10 && frameScore[1] !== 0;else thirdpt2">
           <p>/</p>
         </ng-container>
       </ng-template>
