@@ -1,0 +1,13 @@
+.scorecard-list {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  margin: 20px;
+  padding: 0px;
+  overflow: scroll;
+  border: 1px solid black
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

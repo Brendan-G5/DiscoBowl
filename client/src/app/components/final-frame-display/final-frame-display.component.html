@@ -34,7 +34,7 @@
     </div>
   </div>
   <div class='frame-bottom'>
-    <p>{{roundScore}}</p>
+    <p *ngIf = "frameScore[0] || frameScore[1] || frameScore[0] === 0">{{roundScore}}</p>
   </div>
 </div>
 

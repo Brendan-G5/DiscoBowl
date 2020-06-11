@@ -1,7 +1,14 @@
 <div class = 'score-card'>
   <div class = 'player-info'>
-    {{player.name}}
-    {{player.gamesWon}}
+    <div class = 'player-name bold'>
+      {{player.name}}
+    </div>
+    <div>
+      Games Won:
+    </div>
+    <div class = 'player-games-won bold'>
+      {{player.gamesWon}}
+    </div>
   </div>
   <div class = 'frames'>
     <app-frame-display class = 'one-frame' [roundScore] = "player.roundScore[0]" [frameScore] = "player.frameScore[0]"></app-frame-display>

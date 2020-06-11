@@ -5,7 +5,6 @@ import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./views/header/header.component";
-import { SetUpComponent } from "./views/set-up/set-up.component";
 import { GamePlayComponent } from "./components/game-play/game-play.component";
 import { HowToComponent } from "./views/how-to/how-to.component";
 import { AddPlayerComponent } from "./components/add-player/add-player.component";
@@ -20,7 +19,6 @@ import { FinalFrameDisplayComponent } from "./components/final-frame-display/fin
   declarations: [
     AppComponent,
     HeaderComponent,
-    SetUpComponent,
     GamePlayComponent,
     HowToComponent,
     AddPlayerComponent,

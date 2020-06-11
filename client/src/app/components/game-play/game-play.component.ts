@@ -19,8 +19,8 @@ export class GamePlayComponent implements OnInit {
   finished = false;
 
   ngOnInit(): void {
-    this.players = this.stateService.players;
-    // this.players = ["Brendan"];
+    // this.players = this.stateService.players;
+    this.players = ["Shaggy", "Velma", "Fred", "Scooby", "Daphnie", "Scrappy"];
     this.fullPlayers = [];
     this.players.forEach((name) => {
       this.fullPlayers.push({
