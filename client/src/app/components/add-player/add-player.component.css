@@ -11,13 +11,18 @@
 
 .submit-input{
   width: 90%;
-  background-color: var(--secondary);
+  background-color: black;
   color:white;
   cursor: pointer;
   height: 40px;
+  border: 1px fuchsia solid
 }
 
 .submit-input:focus{
   outline: none;
+}
+
+input {
+  font-family: 'Sriracha', cursive;
 }
 

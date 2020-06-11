@@ -21,7 +21,7 @@
   border: 1px solid black ;
   border-radius: 10px;
   height: 4rem;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .play-button:hover {
@@ -48,7 +48,7 @@
   overflow: scroll;
   border: black 1px solid;
   margin-bottom: 20px;
-  background-color: var(--tertiary);
+  background-color: rgba(50,50,50,0.5);
   border-radius: 10px;
   box-shadow: 6px 6px 5px -1px rgba(0,0,0,0.75);
 }

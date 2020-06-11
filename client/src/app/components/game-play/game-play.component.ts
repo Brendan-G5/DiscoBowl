@@ -50,6 +50,7 @@ export class GamePlayComponent implements OnInit {
     this.finished = false;
     this.fullPlayers = this.bowlService.getBowlers();
     this.livePlayer = this.fullPlayers[this.bowlService.CurrentPlayer];
+    this.updateBoard();
   }
 
   //Called on each roll to get updated information from the state
@@ -71,7 +72,7 @@ export class GamePlayComponent implements OnInit {
     const el: HTMLElement = document.getElementsByClassName(
       "live"
     )[0] as HTMLElement;
-    el.style.backgroundColor = "#000000";
+    el.style.backgroundColor = "rgba(192,192,192,0)";
   }
 
   //Used to scroll to the current player in the scorecard list

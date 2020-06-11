@@ -28,6 +28,10 @@ export class PlayerSelectionComponent implements OnInit {
       setTimeout(() => {
         const els: any = document.getElementsByClassName("player-item");
         els[els.length - 1].style.backgroundColor = randomColour;
+        const cont: any = document.getElementsByClassName(
+          "player-item-cont"
+        )[0];
+        cont.scrollTop = cont.scrollHeight;
       }, 0);
     }
   }
