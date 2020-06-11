@@ -42,6 +42,8 @@ export class GamePlayComponent implements OnInit {
   playAgain(): void {
     this.bowlService.rematch();
     this.finished = false;
+    this.fullPlayers = this.bowlService.getBowlers();
+    this.livePlayer = this.fullPlayers[this.bowlService.CurrentPlayer];
   }
 
   updateBoard(): void {
@@ -51,6 +53,8 @@ export class GamePlayComponent implements OnInit {
       this.finished = true;
     }
     this.scroll();
+    console.log(this.livePlayer);
+    console.log(this.fullPlayers);
   }
 
   scroll(): void {

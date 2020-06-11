@@ -6,4 +6,9 @@
   padding: 50px;
   max-width: 800px;
   max-height: 400px;
+  overflow: scroll;
+}
+
+.text {
+  max-height: 300px;
 }

@@ -71,3 +71,6 @@ html{
   100% { background-position: 0 0; }
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
