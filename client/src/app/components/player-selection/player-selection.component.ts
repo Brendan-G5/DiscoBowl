@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { StateService } from "../../services/service-state.service";
 import { Router } from "@angular/router";
+import listOfColors from "../../constants/colors.js";
 
 @Component({
   selector: "app-player-selection",
@@ -21,7 +22,13 @@ export class PlayerSelectionComponent implements OnInit {
     if (this.players.includes(name)) {
       alert("Player already exists");
     } else {
+      const randomColour =
+        listOfColors[Math.floor(Math.random() * listOfColors.length)];
       this.players.push(name);
+      setTimeout(() => {
+        const els: any = document.getElementsByClassName("player-item");
+        els[els.length - 1].style.backgroundColor = randomColour;
+      }, 0);
     }
   }
 

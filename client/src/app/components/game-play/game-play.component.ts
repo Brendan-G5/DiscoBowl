@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FullPlayer } from "../../models/Player";
 import { StateService } from "../../services/service-state.service";
 import { BowlingStateService } from "../../services/bowling-state.service";
+import listOfColors from "../../constants/colors.js";
 
 @Component({
   selector: "app-game-play",
@@ -18,22 +19,7 @@ export class GamePlayComponent implements OnInit {
   fullPlayers: FullPlayer[];
   finished = false;
   livePlayer: FullPlayer;
-  listOfColors = [
-    "#0FC0FC",
-    "#7B1DAF",
-    "#FF2FB9",
-    "#D4FF47",
-    "#B51D05",
-    "#ED7627",
-    "#FFDC40",
-    "#73BD37",
-    "#1D808B",
-    "#FC3756",
-    "#81217C",
-    "#24AD2D",
-    "#E3092F",
-    "#D13189",
-  ];
+  listOfColors = listOfColors;
 
   //Initiates the game screen by getting names from the name service
   //Then creating a Player object based off the model for each player
@@ -80,6 +66,7 @@ export class GamePlayComponent implements OnInit {
     this.scrollAndChangeColour();
   }
 
+  //Changes previous live player element back to black
   changeColourBack(): void {
     const el: HTMLElement = document.getElementsByClassName(
       "live"
