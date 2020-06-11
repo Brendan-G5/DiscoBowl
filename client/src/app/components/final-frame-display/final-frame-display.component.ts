@@ -8,6 +8,9 @@ import { Component, OnInit, Input } from "@angular/core";
 export class FinalFrameDisplayComponent implements OnInit {
   constructor() {}
 
+  //As the service state is creating objects that come out just the way i want them
+  //all of the logic is done in the html file with ngIf etc...
+
   @Input() frameScore: number[];
   @Input() roundScore: number[];
 

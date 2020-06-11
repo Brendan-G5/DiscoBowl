@@ -20,6 +20,8 @@ export class AddPlayerComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  //Called when enter hit or submit pressed, checks for length then
+  //adds player to the players object stored in parent component with emit.
   onSubmit(): void {
     if (this.toAdd && this.toAdd.length < 10) {
       this.addPlayer.emit(this.toAdd);

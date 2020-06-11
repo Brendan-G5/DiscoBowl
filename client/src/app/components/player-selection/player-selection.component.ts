@@ -16,6 +16,7 @@ export class PlayerSelectionComponent implements OnInit {
     this.players = [];
   }
 
+  //Adds player to the players array, stores all names before game starts
   addPlayer(name: string): void {
     if (this.players.includes(name)) {
       alert("Player already exists");
@@ -24,12 +25,15 @@ export class PlayerSelectionComponent implements OnInit {
     }
   }
 
+  //Used to remove player from the players array
   deletePlayer(name: string): void {
     this.players = this.players.filter((player) => {
       return name !== player;
     });
   }
 
+  //Called when game is ready to be played, Transfers names to the "state service"
+  //Maybe not the best name, "Name service" would be better. The switchs to the play screen.
   playGame(): void {
     this.stateService.setPlayers(this.players);
     this.router.navigate(["play"]);

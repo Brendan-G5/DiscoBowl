@@ -11,6 +11,9 @@ export class FrameDisplayComponent implements OnInit {
   @Input() frameScore: number[];
   @Input() roundScore: number[];
 
+  //As the service state is creating objects that come out just the way i want them
+  //all of the logic is done in the html file with ngIf etc...
+
   ngOnInit(): void {}
 
   ngOnChange(): void {}

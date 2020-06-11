@@ -19,9 +19,11 @@ export class GamePlayComponent implements OnInit {
   finished = false;
   livePlayer: FullPlayer;
 
+  //Initiates the game screen by getting names from the name service
+  //Then creating a Player object based off the model for each player
+  //and saves that model to the Bowling Service(where all bowling logic runs)
   ngOnInit(): void {
     this.players = this.stateService.players;
-    // this.players = ["Shaggy"];
     this.fullPlayers = [];
     this.players.forEach((name) => {
       this.fullPlayers.push({
@@ -39,6 +41,8 @@ export class GamePlayComponent implements OnInit {
     this.livePlayer = this.bowlService.getBowlers()[0];
   }
 
+  //Calls rematch in Bowling Service and prepares any properties
+  //for a rematch, also used in complete reset (in addition to a router change)
   playAgain(): void {
     this.bowlService.rematch();
     this.finished = false;
@@ -46,6 +50,8 @@ export class GamePlayComponent implements OnInit {
     this.livePlayer = this.fullPlayers[this.bowlService.CurrentPlayer];
   }
 
+  //Called on each roll to get updated information from the state
+  //so that it can be displayed on the scorecards
   updateBoard(): void {
     this.fullPlayers = this.bowlService.getBowlers();
     this.livePlayer = this.fullPlayers[this.bowlService.CurrentPlayer];
@@ -53,10 +59,9 @@ export class GamePlayComponent implements OnInit {
       this.finished = true;
     }
     this.scroll();
-    console.log(this.livePlayer);
-    console.log(this.fullPlayers);
   }
 
+  //Used to scroll to the current player in the scorecard list
   scroll(): void {
     setTimeout(() => {
       const el: HTMLElement = document.getElementsByClassName(

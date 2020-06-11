@@ -4,6 +4,11 @@ import { FullPlayer } from "../models/Player";
 @Injectable({
   providedIn: "root",
 })
+
+//This on is a bit of a beast, but this is where all of the bowling happens!
+//This is called with a number of pins and a ball number.
+//It manages scores, total games won, individual frame scores and everything
+//else that is needed to run and show the bowling game.
 export class BowlingStateService {
   constructor() {}
   BowlingState: FullPlayer[];
@@ -16,15 +21,21 @@ export class BowlingStateService {
   refreshNumbers = false;
   gameover = false;
 
+  //This is used to set the bowlers, it is used only once when the initial
+  //play game is pressed.
   setBowlers(players: FullPlayer[]): void {
     this.BowlingState = players;
     this.NumberOfPlayers = players.length;
   }
 
+  //This function returns the BowlingState, this is the state object that holds all
+  //game information for each player.
   getBowlers(): FullPlayer[] {
     return this.BowlingState;
   }
 
+  //This function makes the state object change its current player
+  //to the next in line. It will also end the game/change the framenumber when needed.
   nextPlayer(): void {
     if (this.CurrentPlayer + 1 >= this.NumberOfPlayers) {
       this.CurrentPlayer = 0;
@@ -37,12 +48,15 @@ export class BowlingStateService {
     }
   }
 
+  //This is the function that is called from the outside in order to register
+  //a thrown ball.
   throw(pins: number, ballNumber: number): void {
     this.refreshNumbers = false;
     let spot = ballNumber;
     if (pins === 10) {
       spot = 1;
     }
+    //I treat the last frame seperatly from the first 9, here is the split
     if (this.FrameNumber !== 9) {
       this.BowlingState[this.CurrentPlayer].frameScore[this.FrameNumber][
         spot
@@ -52,38 +66,44 @@ export class BowlingStateService {
         this.nextPlayer();
       }
     } else {
-      this.BowlingState[this.CurrentPlayer].roundScore[
-        this.FrameNumber
-      ] += pins;
-      this.BowlingState[this.CurrentPlayer].frameScore[this.FrameNumber][
-        this.TenBall
-      ] = pins;
-      if (this.TenBall === 0) {
-        this.TenFirstHit = pins;
-        this.awardTriple(pins, ballNumber);
-        this.awardDouble(pins, ballNumber);
-        this.awardSpare(pins, ballNumber);
-        this.calcTotalScore();
-        this.TenBall++;
-      } else if (this.TenBall === 1) {
-        this.awardDouble(pins, ballNumber);
-        this.awardSpare(pins, ballNumber);
-        this.calcTotalScore();
-        this.TenBall++;
-        if (this.TenFirstHit + pins < 10) {
-          this.TenBall = 0;
-          this.nextPlayer();
-          this.refreshNumbers = true;
-        }
-      } else if (this.TenBall === 2) {
-        this.calcTotalScore();
+      this.tenthFrame(pins, ballNumber);
+    }
+  }
+
+  //This frame is pretty hard coded, could likely be less code, something to work on
+  tenthFrame(pins: number, ballNumber: number): void {
+    this.BowlingState[this.CurrentPlayer].roundScore[this.FrameNumber] += pins;
+    this.BowlingState[this.CurrentPlayer].frameScore[this.FrameNumber][
+      this.TenBall
+    ] = pins;
+    if (this.TenBall === 0) {
+      this.TenFirstHit = pins;
+      this.awardTriple(pins, ballNumber);
+      this.awardDouble(pins, ballNumber);
+      this.awardSpare(pins, ballNumber);
+      this.calcTotalScore();
+      this.TenBall++;
+    } else if (this.TenBall === 1) {
+      this.awardDouble(pins, ballNumber);
+      this.awardSpare(pins, ballNumber);
+      this.calcTotalScore();
+      this.TenBall++;
+      if (this.TenFirstHit + pins < 10) {
         this.TenBall = 0;
         this.nextPlayer();
         this.refreshNumbers = true;
       }
+    } else if (this.TenBall === 2) {
+      this.calcTotalScore();
+      this.TenBall = 0;
+      this.nextPlayer();
+      this.refreshNumbers = true;
     }
   }
 
+  //This function is used after every throw in the first 9 frames.
+  //It adds the number of hit pins to that frames points
+  //then checks for other points needing to be awared in previous frames.
   calcScores(pins: number, ballNumber: number): void {
     this.BowlingState[this.CurrentPlayer].roundScore[this.FrameNumber] += pins;
     this.awardTriple(pins, ballNumber);
@@ -93,6 +113,8 @@ export class BowlingStateService {
     this.calcTotalScore();
   }
 
+  //This is what is going to award a triple, meaning you already have
+  //two strikes in a row.
   awardTriple(pins: number, ballNumber: number): void {
     if (this.BowlingState[this.CurrentPlayer].doubleStrike) {
       this.BowlingState[this.CurrentPlayer].roundScore[
@@ -104,6 +126,8 @@ export class BowlingStateService {
     }
   }
 
+  //This function is going to award a double, meaning that your last roll was a strike.
+  //It is also here that we check if you you're on a roll and have gotten a double strike
   awardDouble(pins: number, ballNumber: number): void {
     if (this.BowlingState[this.CurrentPlayer].strike) {
       this.BowlingState[this.CurrentPlayer].roundScore[
@@ -118,6 +142,7 @@ export class BowlingStateService {
     }
   }
 
+  //This function is awards spare points, meaning your last roll was a spare
   awardSpare(pins: number, ballNumber: number): void {
     if (this.BowlingState[this.CurrentPlayer].spare && ballNumber === 0) {
       this.BowlingState[this.CurrentPlayer].roundScore[
@@ -127,6 +152,8 @@ export class BowlingStateService {
     }
   }
 
+  //This function checks for your specials, so here we decide if
+  //your current roll was a strike/spare.
   checkForSpecial(ballNumber: number): void {
     if (
       this.BowlingState[this.CurrentPlayer].roundScore[this.FrameNumber] === 10
@@ -139,6 +166,8 @@ export class BowlingStateService {
     }
   }
 
+  //This function is called simply to get a sum of all the round scores and produce
+  //a total score for the game
   calcTotalScore(): void {
     this.BowlingState[this.CurrentPlayer].totalMatchScore = this.BowlingState[
       this.CurrentPlayer
@@ -147,6 +176,9 @@ export class BowlingStateService {
     });
   }
 
+  //This is called when the final frame finishes
+  //It checks for a winner and increases games won for that person.
+  //Points go to all of those involved in a tie
   endGame(): void {
     this.gameover = true;
     let maxScore = 0;
@@ -165,6 +197,9 @@ export class BowlingStateService {
     this.CurrentPlayer = Infinity;
   }
 
+  //Rematch is called when you want to play again
+  //It sets all necessary values back to a starting position
+  //both for the game properties and the player properties
   rematch(): void {
     this.FrameNumber = 0;
     this.PlayerNumber = 0;

@@ -13,6 +13,7 @@ export class PlayerItemComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  //Used for deleting player from the list
   onDelete(name: string): void {
     this.deletePlayer.emit(name);
   }

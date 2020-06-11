@@ -12,3 +12,12 @@
 .text {
   max-height: 300px;
 }
+
+.title{
+  font-size: 2rem;
+  margin: 10px;
+}
+
+.text-ending{
+  margin: 10px;
+}
