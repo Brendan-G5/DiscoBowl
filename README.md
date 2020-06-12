@@ -1,6 +1,6 @@
 # DiscoBowl
 
-## Do you know how bowling is scored?
+## Do you know how bowling points are tallied?
 
 Me neither. So I googled it then created made a simple app which lets you keep score of a rounds of bowling with as many players as you want. It automatically rotates through each player, so you simple click the number of pins they get per throw and watch the scorecard fill itself out. It's also Disco themed!
 
