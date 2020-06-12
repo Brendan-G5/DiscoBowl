@@ -25,5 +25,9 @@ The scorecard I've made here is slightly different than your regular scorecard. 
 
 ![](client/src/images/screencap3.png)
 
+## Tech
+
+This was made with the Angular CLI
+
 ## Improvements 
 
