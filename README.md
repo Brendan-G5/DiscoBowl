@@ -3,7 +3,9 @@
 ## Do you know how bowling is scored?
 
 Me neither. So I googled it then created made a simple app which lets you keep score of a rounds of bowling with as many players as you want. It automatically rotates through each player, so you simple click the number of pins they get per throw and watch the scorecard fill itself out. It's also Disco themed!
-You can check it out here. [DiscoBowl!](https://discobowl.netlify.app/)
+
+## Want to Try?
+Here is a link! [DiscoBowl!](https://discobowl.netlify.app/)
 
 ## A different scorecard
 
