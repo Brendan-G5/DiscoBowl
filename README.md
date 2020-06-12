@@ -31,3 +31,6 @@ This was made with the Angular CLI v9.0.7.
 
 ## Improvements 
 
+-Could change the 0 to dashes, but 0's seem nicer for beginners 
+-Some sort of celebration on Strike
+
