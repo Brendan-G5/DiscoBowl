@@ -2,7 +2,7 @@
 
 ## Do you know how bowling points are tallied?
 
-Me neither. So I googled it then created made a simple app which lets you keep score of a rounds of bowling with as many players as you want. It automatically rotates through each player, so you simple click the number of pins they get per throw and watch the scorecard fill itself out. It's also Disco themed!
+Me neither. So I googled it then created made a simple app which lets you keep score of a rounds of bowling with as many players as you want. It automatically rotates through each player, so you simply click the number of pins they get per throw and watch the scorecard fill itself out. It's also Disco themed!
 
 ## Want to Try?
 Here is a link! [DiscoBowl!](https://discobowl.netlify.app/)
@@ -21,13 +21,13 @@ The scorecard I've made here is slightly different than your regular scorecard. 
 
 ![](client/src/images/screencap2.png)
 
-3. Once the game is over, the victor is awarded a win! You can then play again, and the app will keep track of players wins. You can also press complete reset, which will reset everything and take you make to the home page.
+3. Once the game is over, the victor is awarded a win! You can then play again, and the app will keep track of players wins. You can also press complete reset, which will reset everything and take you back to the home page.
 
 ![](client/src/images/screencap3.png)
 
 ## Tech
 
-This was made with the Angular CLI v9.0.7
+This was made with the Angular CLI v9.0.7.
 
 ## Improvements 
 
