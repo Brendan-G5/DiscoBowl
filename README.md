@@ -7,7 +7,7 @@ You can check it out here. [DiscoBowl!](https://discobowl.netlify.app/)
 
 ## A different scorecard
 
-The scorecard that i've made here is slightly different than your regular scorecard. Instead of each frame being a collective count of your points so far, the frame has its own score which denotes the amount of points earned for that frame on its own (including bonus from spare/strike/etc). I think it's a much nicer scorecard for a beginner to look at!
+The scorecard that I've made here is slightly different than your regular scorecard. Instead of each frame being a collective count of your points so far, the frame has its own score which denotes the amount of points earned for that frame on its own (including bonus from spare/strike/etc). I think it's a much nicer scorecard for a beginner to look at!
 
 ## How to use it?
 
