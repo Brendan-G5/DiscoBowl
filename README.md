@@ -12,15 +12,15 @@ The scorecard that i've made here is slightly different than your regular scorec
 
 1. Add players to the bowler section by name, play with as many players as you like. Then press 'Let's Boogie'.
 
-![](client/images/screencap1.png)
+![](client/src/images/screencap1.png)
 
 2. Starting from the top and alternating through players, enter a number of pins until the game is over. The game handles whos turn it is and how the frames work, all you have to do is enter the pin number.
 
-![](client/images/screencap2.png)
+![](client/src/images/screencap2.png)
 
 3. Once the game is over, the winner is awarded a point and you can play again! You can also go back to the home page and restart your game.
 
-![](client/images/screencap3.png)
+![](client/src/images/screencap3.png)
 
 ## Improvments 
 
