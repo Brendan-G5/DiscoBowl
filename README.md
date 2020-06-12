@@ -27,7 +27,7 @@ The scorecard I've made here is slightly different than your regular scorecard. 
 
 ## Tech
 
-This was made with the Angular CLI
+This was made with the Angular CLI v9.0.7
 
 ## Improvements 
 
